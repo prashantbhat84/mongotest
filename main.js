@@ -22,13 +22,11 @@ let Todo = mongoose.model("Todo", {
   }
 });
 app.get("/todos", (req, res) => {
-  Todo.find()
+  Todo.find({completed:false})
     .then(todos => {
       if (todos) {
         todos.forEach(todo => {
-          if (todo.completed === false) {
-            count++;
-          }
+          count++;
         });
       }
 
